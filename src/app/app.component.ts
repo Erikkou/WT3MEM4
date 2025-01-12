@@ -1,12 +1,20 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'],
+  imports: [CommonModule, LoginComponent, AdminDashboardComponent] // Add CommonModule here
 })
 export class AppComponent {
-  title = 'WT3MEM4';
+  currentView: 'login' | 'admin' = 'login';
+
+  navigateTo(view: 'login' | 'admin') {
+    this.currentView = view;
+  }
 }
+
